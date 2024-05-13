@@ -1,0 +1,9 @@
+Start :1089
+0 : 3954 
+1 : 2624 
+2 : 3217 
+3 : 2986 
+End :3002
+Coef amortissement :0.67
+TR 5% : 260 ms
+Pulsation propre non amortie : 241.66 rad/s

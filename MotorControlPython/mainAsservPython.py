@@ -8,6 +8,8 @@ import motorcontrol
 import array
 import sys
 import numpy as np
+import matplotlib
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import threading
 
@@ -47,6 +49,64 @@ def updateGraph():
         ax.set_ylim([yMin,yMax])
         ax.grid(True)
         fig.canvas.draw()
+
+        # Save DATA
+        txt = open("data1.txt", "w")
+        txt.write("Start :" + str(g_data1[0]) + "\n")
+        # overflow calcul
+        overflows = []
+
+        sens = 1
+        if g_data1[0] > g_data1[1]:
+            sens = -1
+        limit = g_data1[0]
+
+        for i, value in enumerate(g_data1):
+            if sens == 1 and value < limit:
+                overflows.append((limit))
+                sens = -1
+            elif sens == -1 and value > limit:
+                overflows.append((limit))
+                sens = 1
+            limit = value
+
+        #supression des doublons
+        overflows = list(dict.fromkeys(overflows))
+        if overflows[0] == g_data1[0]:
+            overflows.pop(0)
+        i = 0
+        for value in overflows:
+            txt.write(f"{i} : {value} \n")
+            i += 1
+
+
+        txt.write("End :" + str(g_data1[-1]) + "\n")
+
+        # Coef amortissement
+        m = (g_data1[-1]-g_data1[0])/(overflows[0]-g_data1[0])
+        txt.write("Coef amortissement :" + str(round(m , 2)) + "\n")
+
+        # TR 5%
+        final_value = g_data1[-1]
+        threshold = final_value * 5 / 100
+        stock = -1
+
+        for i, value in enumerate(g_data1):
+            if stock == -1 and value > final_value - threshold and value < final_value + threshold:
+                stock = i
+            elif stock != -1 and value < final_value - threshold and value > final_value + threshold:
+                stock = -1
+        # TR 5% every 10 ms
+        txt.write("TR 5% : " + str(stock*10) + " ms\n")
+
+        #  fonction de transfert du système en boucle fermée
+
+
+
+        txt.close()
+
+
+
     except NameError as e:
         pass
 def graphMain():
