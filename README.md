@@ -3,7 +3,7 @@
 ## Sommaire
 
 
-## V1
+## III
 ### a
 ![img.png](img.png)
 
@@ -26,3 +26,96 @@ teta : 0.33
 ### calculer les valeurs de A et teta
 
 ![img_3.png](img_3.png)
+
+## IV
+### A
+#### 1
+![img_4.png](img_4.png)
+
+![img_5.png](img_5.png)
+
+![img_6.png](img_6.png)
+
+#### 2
+    𝜃(𝑝) = 8/p * FTBF
+
+
+    𝑙𝑖𝑚(𝑡→∞)𝜃(𝑡)  
+
+            = 𝑙𝑖𝑚(𝑝→0)𝑝𝜃(𝑝) 
+
+            = 𝑙𝑖𝑚(𝑝→0) 8/p * FTBF * p
+            
+            = 8 / k
+
+#### 3
+    𝜀 = Ve - Us
+    Us = Ad * Ab * T(p) * K * 𝜀
+    Us = Ad * Ab * (A/p(1+tp)) * K * 𝜀
+    
+    𝜀 = Ve - Ad * Ab * (A/p(1+tp)) * K * 𝜀
+    
+    𝜀 = Ve / (1 + Ad * Ab * (A/p(1+tp)) * K)
+    
+    𝑙𝑖𝑚(𝑡→∞)𝜀(𝑡)    
+                = 𝑙𝑖𝑚(𝑝→0)𝑝𝜀(𝑝)
+                = 𝑙𝑖𝑚(𝑝→0)𝑝 * Ve / (1 + Ad * Ab * (A/p(1+tp)) * K)
+                = 0
+
+#### 4
+
+![img_7.png](img_7.png)
+
+### B
+
+#### 1
+
+![img_10.png](img_10.png)
+
+#### 2
+
+![img_8.png](img_8.png) 
+                    
+
+### C
+
+#### 1
+
+![img_9.png](img_9.png)
+
+#### 2
+
+```A = 2.4300;
+Tau = 0.4100;
+Ka = 30/(2*pi);
+Ab = 1;
+Ad = 1;
+a = 2.4;
+t = 0.65/6.40;
+% Création de la fonction de transfert T(p)
+s = tf('s');
+T = A/(s* (1 + Tau * s));
+Cp = (1+a*t*s)/(1+t*s)
+% Création de la fonction de transfert en boucle ouverte
+FTBO = T*Ab*Ad*Ka*Cp;
+% Diagramme de Bode
+figure;
+margin (FTBO);
+title('Diagramme de Bode');
+% Diagramme de Black-Nichols
+figure;
+nichols (FTBO);
+title('Diagramme de Black-Nichols');
+
+Transfer function 'Cp' from input 'u1' to output ...
+
+      0.2437 s + 1
+ y1:  ------------
+      0.1016 s + 1
+
+Continuous-time model.
+```
+
+![img_11.png](img_11.png)
+
+![img_12.png](img_12.png)

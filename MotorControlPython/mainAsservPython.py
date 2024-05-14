@@ -85,6 +85,7 @@ def updateGraph():
         # Depassement
         dep = (((overflows[0]-g_data1[0])/(g_data1[-1]-g_data1[0]))*100) - 100
         txt.write("Dépassement de :" + str(round(dep,2)) + "%\n")
+        # Amortissement a 0.23
         m = 0.23
         # TR 5%
         final_value = g_data1[-1]
@@ -108,7 +109,8 @@ def updateGraph():
         #  calcul A et teta
         Ka = 30/(2*np.pi)
         print(Ka)
-        w = 10/(stock*10/1000)
+        # Temps de réponse reduit de 8
+        w = 8/(stock*10/1000)
         print(w)
         Ad = 1
         Ab = 1
@@ -120,7 +122,7 @@ def updateGraph():
 
         txt.close()
 
-        
+
 
 
 
