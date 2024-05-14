@@ -82,28 +82,45 @@ def updateGraph():
 
         txt.write("End :" + str(g_data1[-1]) + "\n")
 
-        # Coef amortissement
-        m = (g_data1[-1]-g_data1[0])/(overflows[0]-g_data1[0])
-        txt.write("Coef amortissement :" + str(round(m , 2)) + "\n")
-
+        # Depassement
+        dep = (((overflows[0]-g_data1[0])/(g_data1[-1]-g_data1[0]))*100) - 100
+        txt.write("Dépassement de :" + str(round(dep,2)) + "%\n")
+        m = 0.23
         # TR 5%
         final_value = g_data1[-1]
         threshold = final_value * 5 / 100
         stock = -1
+        isIn = False
 
         for i, value in enumerate(g_data1):
-            if stock == -1 and value > final_value - threshold and value < final_value + threshold:
+            if not isIn and value >= (final_value - threshold):
                 stock = i
-            elif stock != -1 and value < final_value - threshold and value > final_value + threshold:
-                stock = -1
+                isIn = True
+            elif not isIn and value <= (final_value + threshold):
+                stock = i
+                isIn = True
+            elif isIn and value < (final_value - threshold) or value > (final_value + threshold):
+                isIn = False
+
         # TR 5% every 10 ms
         txt.write("TR 5% : " + str(stock*10) + " ms\n")
 
-        #  fonction de transfert du système en boucle fermée
-
-
+        #  calcul A et teta
+        Ka = 30/(2*np.pi)
+        print(Ka)
+        w = 10/(stock*10/1000)
+        print(w)
+        Ad = 1
+        Ab = 1
+        A = (w/(2*m)) / (Ka*Ad*Ab)
+        txt.write("A : " + str(round(A, 2)) + "\n")
+        w2 = pow(w, 2)
+        teta = (1/w2) / ((2*m)/w)
+        txt.write("teta : " + str(round(teta, 2)) + "\n")
 
         txt.close()
+
+        
 
 
 

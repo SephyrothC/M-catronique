@@ -11,17 +11,18 @@
 ![img_1.png](img_1.png)
 
 ### Valeur quand a
-Start :1089
-D0 : 3954 
-D1 : 2624 
-D2 : 3217 
-D3 : 2986 
-End :3002
-Coef amortissement :0.67
-TR 5% : 260 ms
+Start :1072
+0 : 3978 
+1 : 2601 
+2 : 3235 
+3 : 2977 
+End :3000
+Dépassement de :50.73%
+TR 5% : 1510 ms
+A : 3.02
+teta : 0.33
+
 
 ### calculer les valeurs de A et teta
-
-![img_2.png](img_2.png)
 
 ![img_3.png](img_3.png)
