@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03e587db-83a8-4e39-869f-74ab30764b6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/img_13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_21.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MotorControlPython/data1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MotorControlPython/data1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +47,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;ADRIAN&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/asgri/Documents/GitHub/Mécatronique&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/asgri/Documents/GitHub/CalculatricePython&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -78,6 +76,8 @@
       <workItem from="1715583497230" duration="21102000" />
       <workItem from="1715684726725" duration="12043000" />
       <workItem from="1715756089076" duration="4517000" />
+      <workItem from="1715762812053" duration="44000" />
+      <workItem from="1715772561583" duration="1974000" />
     </task>
     <servers />
   </component>

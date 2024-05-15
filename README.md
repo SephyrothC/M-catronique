@@ -155,3 +155,8 @@ Continuous-time model.
 ##### Fréquentiel
 ![img_16.png](img_16.png)
 ![img_17.png](img_17.png)
+
+
+#### 2
+![img_19.png](img_19.png)
+![img_21.png](img_21.png)
