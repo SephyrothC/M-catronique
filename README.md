@@ -30,7 +30,27 @@ teta : 0.33
 ## IV
 ### A
 #### 1
-![img_4.png](img_4.png)
+```
+% Définition des paramètres
+A = 2.4300;
+Tau = 0.4100;
+Ka= 30/(2*pi);
+Ab = 1;
+Ad = 1;
+% Création de la fonction de transfert T(p)
+s = tf('s');
+T = A/(s* (1 + Tau * s));
+% Création de la fonction de transfert en boucle ouverte
+FTBO = T * Ab * Ad * Ka;
+% Diagramme de Bode
+figure;
+margin (FTBO);
+title('Diagramme de Bode');
+% Diagramme de Black-Nichols
+figure;
+nichols (FTBO);
+title('Diagramme de Black-Nichols');
+```
 
 ![img_5.png](img_5.png)
 
@@ -85,7 +105,8 @@ teta : 0.33
 
 #### 2
 
-```A = 2.4300;
+```
+A = 2.4300;
 Tau = 0.4100;
 Ka = 30/(2*pi);
 Ab = 1;
@@ -119,3 +140,18 @@ Continuous-time model.
 ![img_11.png](img_11.png)
 
 ![img_12.png](img_12.png)
+
+## V
+
+### A
+
+#### 1
+
+##### Temporel
+![img_14.png](img_14.png)
+![img_15.png](img_15.png)
+
+
+##### Fréquentiel
+![img_16.png](img_16.png)
+![img_17.png](img_17.png)
