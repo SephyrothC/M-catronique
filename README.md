@@ -64,9 +64,9 @@ title('Diagramme de Black-Nichols');
 
             = 𝑙𝑖𝑚(𝑝→0)𝑝𝜃(𝑝) 
 
-            = 𝑙𝑖𝑚(𝑝→0) 8/p * FTBF * p
+            = 𝑙𝑖𝑚(𝑝→0) 8/p * FTBF * p²
             
-            = 8 / k
+            = 8 / k * Ab 
 
 #### 3
     𝜀 = Ve - Us
@@ -160,3 +160,54 @@ Continuous-time model.
 #### 2
 ![img_19.png](img_19.png)
 ![img_21.png](img_21.png)
+![img_22.png](img_22.png)
+
+#### 3
+(facultaif)
+
+
+#### 4
+![img_23.png](img_23.png)
+![img_24.png](img_24.png)
+
+### B
+
+#### 1
+
+![img_26.png](img_26.png)
+
+#### 2
+![img_27.png](img_27.png)
+![img_25.png](img_25.png)
+
+#### 3
+
+```
+A = 2.4300;
+Tau = 0.4100;
+Ka = 30/(2*pi);
+Ab = 1;
+Ad = 1;
+a = 2.4;
+t = 0.65/6.40;
+% Création de la fonction de transfert T(p)
+s = tf('s');
+T = A/(s* (1 + Tau * s));
+Cp = (1+a*t*s)/(1+t*s);
+
+
+
+
+bode(Cp);
+
+% Define the sampling time
+Ts = 0.01; % for example
+
+% Apply the Tustin transformation
+Cp_discrete = c2d(Cp, Ts, 'tustin');
+
+% Now you can plot the Bode plot of the discrete-time system
+Cp_discrete
+```
+![img_28.png](img_28.png)
+

@@ -25,7 +25,10 @@ REF_VALUE_MAX=2048+1000
 #============================================================
 def controlLoop(p_refValueIn,p_motorOut):
     #TODO PID calculation algorithm
-    l_epsilon=(p_refValueIn-p_motorOut)
+    Ab = 1
+    Ad = 2.5
+    l_epsilon=((p_refValueIn*Ab)-p_motorOut)
+    l_epsilon = l_epsilon*Ad
     l_outPid=l_epsilon*g_pidP* 0.610
     return l_outPid
 #============================================================
@@ -38,89 +41,105 @@ def getGraphTitleString():
     return ('Press a,b,-,+ P='+str(g_pidP))
 def updateGraph():
     try:
+        # ax.cla()
+        # ax.set_title(getGraphTitleString())
+        # ax.plot(np.linspace(0,len(g_data1)*.01,len(g_data1)),g_data1)
+        # #Y autolimit (default: 0---4096)
+        # yMin=min(g_data1,default=0)
+        # yMin=min(0,yMin)
+        # yMax=max(g_data1,default=0)
+        # yMax=max(4096,yMax)
+        # ax.set_ylim([yMin,yMax])
+        # ax.grid(True)
+        # fig.canvas.draw()
+
         ax.cla()
         ax.set_title(getGraphTitleString())
-        ax.plot(np.linspace(0,len(g_data1)*.01,len(g_data1)),g_data1)
-        #Y autolimit (default: 0---4096)
-        yMin=min(g_data1,default=0)
-        yMin=min(0,yMin)
-        yMax=max(g_data1,default=0)
-        yMax=max(4096,yMax)
-        ax.set_ylim([yMin,yMax])
+        # Convert g_data1 values from degrees to radians
+        g_data1_radians = np.radians(g_data1)
+        ax.plot(np.linspace(0, len(g_data1_radians) * .01, len(g_data1_radians)), g_data1_radians)
+        # Y autolimit (default: 0---4096)
+        yMin = min(g_data1_radians, default=0)
+        yMin = min(0, yMin)
+        yMax = max(g_data1_radians, default=0)
+        yMax = max(np.radians(4096), yMax)
+        ax.set_ylim([yMin, yMax])
         ax.grid(True)
         fig.canvas.draw()
-
-        # Save DATA
-        txt = open("data1.txt", "w")
-        txt.write("Start :" + str(g_data1[0]) + "\n")
-        # overflow calcul
-        overflows = []
-
-        sens = 1
-        if g_data1[0] > g_data1[1]:
-            sens = -1
-        limit = g_data1[0]
-
-        for i, value in enumerate(g_data1):
-            if sens == 1 and value < limit:
-                overflows.append((limit))
-                sens = -1
-            elif sens == -1 and value > limit:
-                overflows.append((limit))
-                sens = 1
-            limit = value
-
-        #supression des doublons
-        overflows = list(dict.fromkeys(overflows))
-        if overflows[0] == g_data1[0]:
-            overflows.pop(0)
-        i = 0
-        for value in overflows:
-            txt.write(f"{i} : {value} \n")
-            i += 1
-
-
-        txt.write("End :" + str(g_data1[-1]) + "\n")
-
-        # Depassement
-        dep = (((overflows[0]-g_data1[0])/(g_data1[-1]-g_data1[0]))*100) - 100
-        txt.write("Dépassement de :" + str(round(dep,2)) + "%\n")
-        # Amortissement a 0.23
-        m = 0.23
-        # TR 5%
-        final_value = g_data1[-1]
-        threshold = final_value * 5 / 100
-        stock = -1
-        isIn = False
-
-        for i, value in enumerate(g_data1):
-            if not isIn and value >= (final_value - threshold):
-                stock = i
-                isIn = True
-            elif not isIn and value <= (final_value + threshold):
-                stock = i
-                isIn = True
-            elif isIn and value < (final_value - threshold) or value > (final_value + threshold):
-                isIn = False
-
-        # TR 5% every 10 ms
-        txt.write("TR 5% : " + str(stock*10) + " ms\n")
-
-        #  calcul A et teta
-        Ka = 30/(2*np.pi)
-        print(Ka)
-        # Temps de réponse reduit de 8
-        w = 8/(stock*10/1000)
-        print(w)
-        Ad = 1
-        Ab = 1
-        A = (w/(2*m)) / (Ka*Ad*Ab)
-        txt.write("A : " + str(round(A, 2)) + "\n")
-        w2 = pow(w, 2)
-        teta = (1/w2) / ((2*m)/w)
-        txt.write("teta : " + str(round(teta, 2)) + "\n")
-
-        txt.close()
+        #
+        # # Save DATA
+        # txt = open("data1.txt", "w")
+        # txt.write("Start :" + str(g_data1[0]) + "\n")
+        # # overflow calcul
+        # overflows = []
+        #
+        # sens = 1
+        # if g_data1[0] > g_data1[1]:
+        #     sens = -1
+        # limit = g_data1[0]
+        #
+        # for i, value in enumerate(g_data1):
+        #     if sens == 1 and value < limit:
+        #         overflows.append((limit))
+        #         sens = -1
+        #     elif sens == -1 and value > limit:
+        #         overflows.append((limit))
+        #         sens = 1
+        #     limit = value
+        #
+        # #supression des doublons
+        # overflows = list(dict.fromkeys(overflows))
+        # if overflows[0] == g_data1[0]:
+        #     overflows.pop(0)
+        # i = 0
+        # for value in overflows:
+        #     txt.write(f"{i} : {value} \n")
+        #     i += 1
+        #
+        #
+        # txt.write("End :" + str(g_data1[-1]) + "\n")
+        #
+        # # Depassement
+        # dep = 0
+        # if g_data1[0] != g_data1[-1]:
+        #     dep = (((overflows[0]-g_data1[0])/(g_data1[-1]-g_data1[0]))*100) - 100
+        # txt.write("Dépassement de :" + str(round(dep,2)) + "%\n")
+        # # Amortissement a 0.23
+        # m = 0.23
+        # # TR 5%
+        # final_value = g_data1[-1]
+        # threshold = final_value * 5 / 100
+        # stock = -1
+        # isIn = False
+        #
+        # for i, value in enumerate(g_data1):
+        #     if not isIn and value >= (final_value - threshold):
+        #         stock = i
+        #         isIn = True
+        #     elif not isIn and value <= (final_value + threshold):
+        #         stock = i
+        #         isIn = True
+        #     elif isIn and value < (final_value - threshold) or value > (final_value + threshold):
+        #         isIn = False
+        #
+        # # TR 5% every 10 ms
+        # txt.write("TR 5% : " + str(stock*10) + " ms\n")
+        #
+        # #  calcul A et teta
+        # Ka = 30/(2*np.pi)
+        # print(Ka)
+        # # Temps de réponse reduit de 8
+        # w = 8/(stock*10/1000)
+        # print(w)
+        # Ad = 2.5
+        # Ab = 1
+        # A = (w/(2*m)) / (Ka*Ad*Ab)
+        # txt.write("A : " + str(round(A, 2)) + "\n")
+        # w2 = pow(w, 2)
+        # teta = (1/w2) / ((2*m)/w)
+        # txt.write("teta : " + str(round(teta, 2)) + "\n")
+        #
+        # txt.close()
 
 
 

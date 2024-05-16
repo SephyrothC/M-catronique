@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03e587db-83a8-4e39-869f-74ab30764b6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/img_18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_28.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MotorControlPython/data1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MotorControlPython/data1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MotorControlPython/mainAsservPython.py" beforeDir="false" afterPath="$PROJECT_DIR$/MotorControlPython/mainAsservPython.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +82,7 @@
       <workItem from="1715684726725" duration="12043000" />
       <workItem from="1715756089076" duration="4517000" />
       <workItem from="1715762812053" duration="44000" />
-      <workItem from="1715772561583" duration="1974000" />
+      <workItem from="1715772561583" duration="10898000" />
     </task>
     <servers />
   </component>
@@ -88,7 +93,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Mécatronique$mainAsservPython.coverage" NAME="mainAsservPython Coverage Results" MODIFIED="1715757855580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MotorControlPython" />
+    <SUITE FILE_PATH="coverage/Mécatronique$mainAsservPython.coverage" NAME="mainAsservPython Coverage Results" MODIFIED="1715844565952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MotorControlPython" />
     <SUITE FILE_PATH="coverage/Mécatronique$mainAsservSTM32.coverage" NAME="mainAsservSTM32 Coverage Results" MODIFIED="1715591290261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MotorControlPython" />
     <SUITE FILE_PATH="coverage/Mécatronique$mainAsservSimulation.coverage" NAME="mainAsservSimulation Coverage Results" MODIFIED="1715591328746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MotorControlPython" />
   </component>
