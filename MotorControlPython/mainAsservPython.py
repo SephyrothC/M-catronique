@@ -23,12 +23,54 @@ REF_VALUE_MAX=2048+1000
 #============================================================
 #            PID controller
 #============================================================
+
+PreviousL_epsilon = 0
+PreviousCp = 0
+
+class updateCp() :
+    def __init__(self):
+        self.PreviousL_epsilon = 0
+        self.PreviousCp = 0
+        self.l_epsilon = 0
+        self.Cp = 0
+
+    def updateCp(self, p_refValueIn, p_motorOut):
+        Ab = 1
+        Ad = 2.5
+        A = 2.334
+        B = -2.24
+        C = 0.9062
+
+        self.l_epsilon = ((p_refValueIn * Ab) - p_motorOut)
+
+        self.Cp = ((A * self.l_epsilon) + (B * self.PreviousL_epsilon) + (C * self.PreviousCp))
+        self.PreviousL_epsilon = self.l_epsilon
+        self.PreviousCp = self.Cp
+        self.l_epsilon = (self.l_epsilon * Ad) + self.Cp
+        if (self.l_epsilon > 32000):
+            self.l_epsilon = 32000
+        elif (self.l_epsilon < -32000):
+            self.l_epsilon = -32000
+        return self.l_epsilon
+
+    def getPreviousL_epsilon(self):
+        return self.PreviousL_epsilon
+
+    def getPreviousCp(self):
+        return self.PreviousCp
+
+    def getL_epsilon(self):
+        return self.l_epsilon
+
+    def getCp(self):
+        return self.Cp
+
+
 def controlLoop(p_refValueIn,p_motorOut):
+
     #TODO PID calculation algorithm
-    Ab = 1
-    Ad = 2.5
-    l_epsilon=((p_refValueIn*Ab)-p_motorOut)
-    l_epsilon = l_epsilon*Ad
+    l_epsilon = updateCp1.updateCp(p_refValueIn, p_motorOut)
+
     l_outPid=l_epsilon*g_pidP* 0.610
     return l_outPid
 #============================================================
@@ -179,8 +221,8 @@ def onNewFrameShort(p_frameCode:int,p_short:array):
         elif len(g_data1)  == 200 :
             g_data1.append(l_motorOut)
             updateGraph()
-        ##### CONTROL LOOP #####     
-        g_motorIn= controlLoop(g_refValueIn,l_motorOut) 
+        ##### CONTROL LOOP #####
+        g_motorIn= controlLoop(g_refValueIn,l_motorOut)
         motorcontrol.writeFrameShort(stm32Serial,'A',[int(g_motorIn)])
 
 
@@ -233,6 +275,7 @@ stm32Serial=motorcontrol.openSerialSTM32()
 
 #create empty list
 g_data1=[]
+updateCp1 = updateCp()
 
 motor=0
 g_refValueIn=REF_VALUE_MIN

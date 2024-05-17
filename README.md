@@ -91,10 +91,12 @@ title('Diagramme de Black-Nichols');
 #### 1
 
 ![img_10.png](img_10.png)
+![img_29.png](img_29.png)
 
 #### 2
 
 ![img_8.png](img_8.png) 
+![img_30.png](img_30.png)
                     
 
 ### C
@@ -174,13 +176,15 @@ Continuous-time model.
 
 #### 1
 
+##### i
+
 ![img_26.png](img_26.png)
 
-#### 2
+##### ii
 ![img_27.png](img_27.png)
 ![img_25.png](img_25.png)
 
-#### 3
+##### iii
 
 ```
 A = 2.4300;
@@ -211,3 +215,58 @@ Cp_discrete
 ```
 ![img_28.png](img_28.png)
 
+
+##### iv
+
+```py
+class updateCp() :
+    def __init__(self):
+        self.PreviousL_epsilon = 0
+        self.PreviousCp = 0
+        self.l_epsilon = 0
+        self.Cp = 0
+
+    def updateCp(self, p_refValueIn, p_motorOut):
+        Ab = 1
+        Ad = 2.5
+        A = 2.334
+        B = -2.24
+        C = 0.9062
+
+        self.l_epsilon = ((p_refValueIn * Ab) - p_motorOut)
+
+        self.Cp = ((A * self.l_epsilon) + (B * self.PreviousL_epsilon) + (C * self.PreviousCp))
+        self.PreviousL_epsilon = self.l_epsilon
+        self.PreviousCp = self.Cp
+        self.l_epsilon = (self.l_epsilon * Ad) + self.Cp
+        if (self.l_epsilon > 32000):
+            self.l_epsilon = 32000
+        elif (self.l_epsilon < -32000):
+            self.l_epsilon = -32000
+        return self.l_epsilon
+
+    def getPreviousL_epsilon(self):
+        return self.PreviousL_epsilon
+
+    def getPreviousCp(self):
+        return self.PreviousCp
+
+    def getL_epsilon(self):
+        return self.l_epsilon
+
+    def getCp(self):
+        return self.Cp
+
+    def controlLoop(p_refValueIn,p_motorOut):
+    
+        #TODO PID calculation algorithm
+        l_epsilon = updateCp1.updateCp(p_refValueIn, p_motorOut)
+    
+        l_outPid=l_epsilon*g_pidP* 0.610
+        return l_outPid
+
+g_data1=[]
+updateCp1 = updateCp()
+
+g_pidP=1
+```
