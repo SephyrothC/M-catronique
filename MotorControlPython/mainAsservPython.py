@@ -37,16 +37,16 @@ class updateCp() :
     def updateCp(self, p_refValueIn, p_motorOut):
         Ab = 1.67
         Ad = 1.49
-        A = 3.932
-        B = -3.364
-        C = 0.8324
+        A = 2.918
+        B = -2.836
+        C = 0.918
 
-        self.l_epsilon = ((p_refValueIn * Ab) - p_motorOut)
+        self.l_epsilon = ((p_refValueIn) - (p_motorOut * Ab))
 
         self.Cp = ((A * self.l_epsilon) + (B * self.PreviousL_epsilon) + (C * self.PreviousCp))
         self.PreviousL_epsilon = self.l_epsilon
         self.PreviousCp = self.Cp
-        self.l_epsilon = (self.l_epsilon * Ad) + self.Cp
+        self.l_epsilon = (self.Cp * Ad)
         if (self.l_epsilon > 32000):
             self.l_epsilon = 32000
         elif (self.l_epsilon < -32000):
@@ -108,7 +108,7 @@ def updateGraph():
         ax.set_ylim([yMin, yMax])
         ax.grid(True)
         fig.canvas.draw()
-        #
+
         # # Save DATA
         # txt = open("data1.txt", "w")
         # txt.write("Start :" + str(g_data1[0]) + "\n")

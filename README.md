@@ -215,26 +215,19 @@ Cp_discrete
 ##### iv
 
 ```py
-class updateCp() :
-    def __init__(self):
-        self.PreviousL_epsilon = 0
-        self.PreviousCp = 0
-        self.l_epsilon = 0
-        self.Cp = 0
-
     def updateCp(self, p_refValueIn, p_motorOut):
-        Ab = 1
-        Ad = 2.5
-        A = 2.334
-        B = -2.24
-        C = 0.9062
+        Ab = 1.67
+        Ad = 1.49
+        A = 2.918
+        B = -2.836
+        C = 0.918
 
-        self.l_epsilon = ((p_refValueIn * Ab) - p_motorOut)
+        self.l_epsilon = ((p_refValueIn) - (p_motorOut * Ab))
 
         self.Cp = ((A * self.l_epsilon) + (B * self.PreviousL_epsilon) + (C * self.PreviousCp))
         self.PreviousL_epsilon = self.l_epsilon
         self.PreviousCp = self.Cp
-        self.l_epsilon = (self.l_epsilon * Ad) + self.Cp
+        self.l_epsilon = (self.Cp * Ad)
         if (self.l_epsilon > 32000):
             self.l_epsilon = 32000
         elif (self.l_epsilon < -32000):
@@ -252,17 +245,5 @@ class updateCp() :
 
     def getCp(self):
         return self.Cp
-
-    def controlLoop(p_refValueIn,p_motorOut):
-    
-        #TODO PID calculation algorithm
-        l_epsilon = updateCp1.updateCp(p_refValueIn, p_motorOut)
-    
-        l_outPid=l_epsilon*g_pidP* 0.610
-        return l_outPid
-
-g_data1=[]
-updateCp1 = updateCp()
-
-g_pidP=1
 ```
+![img_35.png](img_35.png)
