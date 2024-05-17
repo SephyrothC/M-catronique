@@ -112,13 +112,20 @@ A = 2.4300;
 Tau = 0.4100;
 Ka = 30/(2*pi);
 Ab = 1;
-Ad = 1;
-a = 2.4;
-t = 0.65/6.40;
+Ad = 2.5;
+a = 4.2;
+t = 0.45/8.23;
 % Création de la fonction de transfert T(p)
 s = tf('s');
 T = A/(s* (1 + Tau * s));
+
+FTBO = T*Ab*Ad*Ka;
+margin(FTBO)
+
 Cp = (1+a*t*s)/(1+t*s)
+
+bode(Cp);
+
 % Création de la fonction de transfert en boucle ouverte
 FTBO = T*Ab*Ad*Ka*Cp;
 % Diagramme de Bode
@@ -129,20 +136,9 @@ title('Diagramme de Bode');
 figure;
 nichols (FTBO);
 title('Diagramme de Black-Nichols');
-
-Transfer function 'Cp' from input 'u1' to output ...
-
-      0.2437 s + 1
- y1:  ------------
-      0.1016 s + 1
-
-Continuous-time model.
 ```
-
-![img_11.png](img_11.png)
-
-![img_12.png](img_12.png)
-
+![img_32.png](img_32.png)
+![img_33.png](img_33.png)
 ## V
 
 ### A
@@ -169,7 +165,7 @@ Continuous-time model.
 
 
 #### 4
-![img_23.png](img_23.png)
+![img_34.png](img_34.png)
 ![img_24.png](img_24.png)
 
 ### B

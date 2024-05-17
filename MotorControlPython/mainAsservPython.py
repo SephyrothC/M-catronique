@@ -35,11 +35,11 @@ class updateCp() :
         self.Cp = 0
 
     def updateCp(self, p_refValueIn, p_motorOut):
-        Ab = 1
-        Ad = 2.5
-        A = 2.334
-        B = -2.24
-        C = 0.9062
+        Ab = 1.67
+        Ad = 1.49
+        A = 3.932
+        B = -3.364
+        C = 0.8324
 
         self.l_epsilon = ((p_refValueIn * Ab) - p_motorOut)
 

@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03e587db-83a8-4e39-869f-74ab30764b6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/img_29.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_34.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MotorControlPython/mainAsservPython.py" beforeDir="false" afterPath="$PROJECT_DIR$/MotorControlPython/mainAsservPython.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
@@ -78,7 +80,7 @@
       <workItem from="1715756089076" duration="4517000" />
       <workItem from="1715762812053" duration="44000" />
       <workItem from="1715772561583" duration="16197000" />
-      <workItem from="1715928686770" duration="640000" />
+      <workItem from="1715928686770" duration="3966000" />
     </task>
     <servers />
   </component>
@@ -105,7 +107,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Mécatronique$mainAsservPython.coverage" NAME="mainAsservPython Coverage Results" MODIFIED="1715928694516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MotorControlPython" />
+    <SUITE FILE_PATH="coverage/Mécatronique$mainAsservPython.coverage" NAME="mainAsservPython Coverage Results" MODIFIED="1715935935392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MotorControlPython" />
     <SUITE FILE_PATH="coverage/Mécatronique$mainAsservSTM32.coverage" NAME="mainAsservSTM32 Coverage Results" MODIFIED="1715591290261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MotorControlPython" />
     <SUITE FILE_PATH="coverage/Mécatronique$mainAsservSimulation.coverage" NAME="mainAsservSimulation Coverage Results" MODIFIED="1715591328746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MotorControlPython" />
     <SUITE FILE_PATH="coverage/Mécatronique$motorcontrol.coverage" NAME="motorcontrol Coverage Results" MODIFIED="1715850111322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MotorControlPython" />
